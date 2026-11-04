@@ -32,12 +32,12 @@ jobs:
           python-version: "3.x"
 
       - name: Prepare WebGL site
-        run: python scripts/prepare_github_pages.py "$RUNNER_TEMP/formula-horizon-site"
+        run: python scripts/prepare_github_pages.py "$RUNNER_TEMP/rally-pioneers-site"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ runner.temp }}/formula-horizon-site
+          path: ${{ runner.temp }}/rally-pioneers-site
 
       - name: Deploy to GitHub Pages
         id: deployment
