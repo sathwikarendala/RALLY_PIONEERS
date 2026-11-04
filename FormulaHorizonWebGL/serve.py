@@ -30,7 +30,7 @@ class UnityWebGLHandler(SimpleHTTPRequestHandler):
 if __name__ == "__main__":
     server = ThreadingHTTPServer((HOST, 0), UnityWebGLHandler)
     address = f"http://{HOST}:{server.server_port}/"
-    print(f"Serving Formula Horizon at {address}")
+    print(f"Serving Rally Pioneers at {address}")
     print("Keep this window open while playing. Press Ctrl+C to stop.")
     webbrowser.open(address)
     server.serve_forever()

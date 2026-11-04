@@ -1,4 +1,4 @@
-# Formula Horizon — Unity 2021.3 LTS
+# Rally Pioneers — Unity 2021.3 LTS
 
 This download is a complete Unity source project, not an executable or a Unity package.
 Both nitrogen and boost have been removed: no power buttons, arches, pickups, speed surges or exhaust flames.
@@ -9,8 +9,8 @@ Both nitrogen and boost have been removed: no power buttons, arches, pickups, sp
 3. In Hub > Projects > Add > Add project from disk, select the inner RallyPioneersRacing folder. It must directly contain Assets, Packages and ProjectSettings. Do not select the ZIP, Assets alone, or the outer extraction folder.
 4. In the project's Editor version column, choose 2021.3.45f2. If no editor version is assigned, install that editor first and select it; a listing in Hub alone does not open the game.
 5. Click the newly added project and allow the initial import to complete.
-6. Choose Formula Horizon > Open Game Scene, or open Assets/Scenes/RallyMain.unity.
-7. Press Play, click the Game tab, choose a track, then Start Race. The scene looks empty before Play because the track, cars and crowd are generated at runtime.
+6. Choose Rally Pioneers > Open Game Scene, or open Assets/Scenes/RallyMain.unity.
+7. Press Play, click the Game tab, then Start Race on the desert circuit. The scene looks empty before Play because the track, cars and crowd are generated at runtime.
 
 ## If the project will not open
 - 'Editor not installed' or an empty Editor version: install and assign 2021.3.45f2 in Hub.
@@ -26,15 +26,15 @@ Both nitrogen and boost have been removed: no power buttons, arches, pickups, sp
 W / Up / gas pedal: accelerate. S / Down / brake pedal: brake, then reverse.
 A / Left / left button: left. D / Right / right button: right.
 Space: handbrake. B: recover to track. R: restart. Esc: pause.
-Two distinct circuits, five AI rivals, three laps, safe grass run-off, perimeter fences, animated crowds, speed dial and minimap.
+One desert circuit, five AI rivals, three laps, safe run-off, perimeter fences, animated crowds, speed dial and minimap.
 
 ## Build for Windows
-Install Windows Build Support for Unity 2021.3.45f2 in Hub, then use Formula Horizon > Build Windows Game.
+Install Windows Build Support for Unity 2021.3.45f2 in Hub, then use Rally Pioneers > Build Windows Game.
 Choose an empty output folder and share the ENTIRE resulting folder, not just the EXE.
 The editor helper automatically retains the Standard shader used by the generated car and scenery materials.
 
-## Version-only update
-This archive targets Unity 2021.3.45f2, revision 88f88f591b2e, verified against Unity's official release page. All game scripts, scene files, track layouts, visual assets, input settings and package dependencies are unchanged from the previous clear-road edition. The editor performs any required import when first opened.
+## Desert-only game
+The game includes only the Desert Horizon — Canyon Rush circuit. The forest environment and track selection have been removed.
 
-## Checks and limitation
-The archive layout, source/configuration and browser driving were checked. Unity is not installed in the authoring environment, so Unity compilation, import and Play mode remain unverified.
+## Checks
+The WebGL game is rebuilt from the Unity 2021.3.45f2 project after source changes.

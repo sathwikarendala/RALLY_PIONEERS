@@ -16,7 +16,7 @@ public static class RallyBuild
         var shaders = settings.FindProperty("m_AlwaysIncludedShaders");
         if (shaders == null) return;
         var shader = Shader.Find("Standard");
-        if (shader == null) { Debug.LogError("Formula Horizon needs the Built-in Standard shader. Open with Unity 2021.3 LTS and the Built-in render pipeline."); return; }
+        if (shader == null) { Debug.LogError("Rally Pioneers needs the Built-in Standard shader. Open with Unity 2021.3 LTS and the Built-in render pipeline."); return; }
         for (int i = 0; i < shaders.arraySize; i++)
             if (shaders.GetArrayElementAtIndex(i).objectReferenceValue == shader) return;
         int index = shaders.arraySize;
@@ -25,19 +25,19 @@ public static class RallyBuild
         settings.ApplyModifiedProperties();
         AssetDatabase.SaveAssets();
     }
-    [MenuItem("Formula Horizon/Open Game Scene")]
+    [MenuItem("Rally Pioneers/Open Game Scene")]
     public static void Open()
     {
         if(!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())return;
         EditorSceneManager.OpenScene("Assets/Scenes/RallyMain.unity");
     }
-    [MenuItem("Formula Horizon/Build Windows Game")]
+    [MenuItem("Rally Pioneers/Build Windows Game")]
     public static void Windows()
     {
         RetainRuntimeShaders();
         string folder=EditorUtility.OpenFolderPanel("Choose Windows build folder","","");
         if(string.IsNullOrEmpty(folder))return;
-        var result=BuildPipeline.BuildPlayer(new[]{"Assets/Scenes/RallyMain.unity"},folder+"/FormulaHorizon.exe",BuildTarget.StandaloneWindows64,BuildOptions.None);
+        var result=BuildPipeline.BuildPlayer(new[]{"Assets/Scenes/RallyMain.unity"},folder+"/RallyPioneers.exe",BuildTarget.StandaloneWindows64,BuildOptions.None);
         Debug.Log("Build result: "+result.summary.result);
     }
 }

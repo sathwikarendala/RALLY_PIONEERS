@@ -1,6 +1,6 @@
 Team Name: Prefab Pioneers 
 
-Game Name: Formula Horizon 
+Game Name: Rally Pioneers
 
 Team Members: 
     Saurav Yadav (raosaurav@gatech.edu) 
@@ -12,41 +12,35 @@ Start Scene of the project: MainMenu
 
 How to play and what parts of the level to observe technology requirements? 
 - On opening the game, the main menu scene will be displayed. 
-- The player can choose to start a new game with different scenes like Forest, Desert or training scene.
-- Initially only the training and Desert level are unlocked. The player can unlock the Forest level by finishing first in the Desert level. 
+- The player starts a race on the Desert Horizon — Canyon Rush circuit.
 - There is also an Achievements section which shows different achievements that the player can unlock by completing certain tasks.
-- The Forest and Desert levels have AI bots that the player can fight against while the training scene is for the player to practice and get used to the controls. 
+- The desert circuit has AI opponents that the player can race against.
 - The controls for moving the vehicle vary based on the platform. For PCs, the player uses the arrow keys:
 - Up and down arrow keys are used to move the vehicle forward and backward respectively. 
 - The left and right arrow keys are used to steer the vehicle left and right respectively. 
 - The vehicle can be respawned by pressing the 'B' key on the keyboard, and the level can be reset by pressing the 'R' key on the keyboard. The ‘ESC’ key brings up the menu options.
-- In the game, the player needs to complete 2 laps of the track in the shortest time possible. 
-- There are power ups like speed boost, shields and portals that the player can collect to gain an advantage over the AI bots.
-- There are also multiple obstacles like oil spills that the player needs to avoid, as hitting them will cause a temporary loss of vehicle control.
+- In the game, the player needs to complete 3 laps of the desert circuit in the shortest time possible.
+- The game has no power-ups; the player races against AI opponents and aims for their best time.
 
 Each of the technological requirements met in the game are listed below: 
 
 1. 3D Game Feel  
 
-- The game has a 3D environment with 3D models for the vehicle, AI bots, power-ups and oil spills. The player can move the vehicle in 3D space and the camera follows the vehicle as it moves around the track. The two different 3D environments are Forest and Desert levels. The Forest level has trees, grass and a road track while the Desert level has sand, rocks and a sandy track. The track themselves have ups and downs as well as sharp turns to make the game more challenging and fun. 
-- The game has a clear objective to finish 2 laps of the track in the shortest time possible. The player can see the lap count and time taken on the screen. At the end of the 2 laps, the player is shown the time taken to complete both the laps and the comparison with AI bots. 
-- The player has the Start menu to start the chosen level, pause the game in between and respawn the vehicle if it goes off the track. The vehicle can be respawned by pressing the 'B' key on the keyboard and the level can be reset by pressing the 'R' key on the keyboard. 
+- The game has one 3D desert environment with a procedural circuit, canyon scenery, AI cars and a chase camera. The circuit has elevation changes and sharp turns.
+- The game has a clear objective to finish 3 laps in the shortest time possible. The player can see the lap count, race time and position, and compare results with AI opponents.
+- The main menu starts the desert race. The player can pause, recover the vehicle with 'B', and restart with 'R'.
 
 2.Fun Gameplay 
 
-- Players can choose from a variety of tracks, each offering unique challenges. Tracks include winding roads, elevated twists, and sharp turns to test driving skills. 
+- The single desert circuit combines winding roads, elevation changes and sharp turns to test driving skills.
 - Designed to provide a thrilling experience with dynamic and complex layouts, features such as narrow passages, steep inclines, and hairpin turns keep the race exciting. 
 - AI opponents are designed to provide a challenging and competitive racing experience. 
-- The tracks are populated with obstacles that players must navigate around or avoid. Elements like oil slicks and barriers add an extra layer of challenge. 
-- Players can collect speed boosts to gain an advantage over opponents. Portals and other special power-ups provide unique gameplay twists and strategic options. 
+- The desert circuit has roadside scenery, barriers and safe run-off areas.
 - The game features realistic vehicle dynamics, including accurate acceleration, torque, and suspension behavior. Cars respond authentically to player inputs and environmental interactions, enhancing immersion. 
-- Beautifully rendered environments enhance the racing experience. Detailed scenery, realistic lighting, and dynamic weather conditions make each race visually appealing and engaging. 
+- Detailed desert scenery and warm lighting enhance the racing experience.
 - The game tracks the time taken to complete each lap, adding an element of time management and efficiency. The game shows the player after-race highlights with the time taken and how the player stands in comparison to the AI NPCs.
-- The shield and boost power-ups are placed side-by-side to give the player interesting choices to make. The player can only select one at a time. 
-- The player can also choose a shortcut by going off-track. This will reduce the distance, but the player's speed will be reduced due to the sand and off-road terrain.
+- Off-road terrain slows the player, making shortcuts a trade-off.
 - The game HUD displays the current rank of the player and also has a mini-map that shows each player's position on the track.
-- The Forest level is locked initially and can be unlocked by finishing first in the Desert level. This adds a competitive element to the game and encourages players to improve their skills to unlock new content.
-- The Main Menu has an Achievements section that shows different achievements that the player can unlock by completing certain tasks. This adds replay value and encourages players to explore different aspects of the game.
 - Added background music to make the player feel more immersed in the game. 
 
 3. 3D Vehicle with Real-Time Control  
@@ -54,20 +48,19 @@ Each of the technological requirements met in the game are listed below:
 - The car emulates real-world behavior with features like moving wheels and suspension movement. 
 - Acceleration, vehicle torque, maximum speed, and friction are designed to replicate real-world values and behavior. 
 - The car can be easily controlled using mapped keys, providing a smooth and intuitive driving experience. 
-- Players can interact with various car components, including the car horn and brakes, while racing. 
+- Players control acceleration, braking and steering while racing.
 - Players can engage in realistic races against AI opponents, enhancing the competitive aspect of the game. 
 - AI-controlled cars exhibit distinct behaviors and strategies, providing a challenging and dynamic racing environment. 
 - The player's car will interact dynamically with the environment, including obstacles and other scene elements. 
-- Players can collect items like speed boosts and encounter hazards such as oil slicks. 
 - The game tracks the time taken to complete each lap, adding an element of time management and efficiency. 
 - A time counter displays the total time taken by the player and the NPC AI to complete the race. 
 - Lap counters, current rank and time records provide detailed feedback on performance, encouraging players to improve their skills and beat their best times. 
 
 4. 3D World with Physics and Spatial Simulation 
 
-- Racing game set in various scenes such as desert and forest tracks. 
+- Racing game set on a single desert circuit.
 - Realistic lighting sources and environmental physics for immersion. 
-- Dynamic environmental elements like hills, trees, and sand dunes. 
+- Dynamic environmental elements like hills, canyon rocks and cacti.
 - Player-interactable elements with accurate physics behaviors. 
 - Collisions with scene elements cause realistic stopping and physical reactions. 
 - Real-world physics simulations for environmental interactions. 
@@ -75,7 +68,7 @@ Each of the technological requirements met in the game are listed below:
 - AI cars interact with the environment and other vehicles according to physical laws, enhancing the realism of the racing experience. 
 - Player's car with detailed physics including moving wheels, suspension, and vehicle bounce. 
 - Accurate simulation of car behavior and collisions.
-- The player car can collide with the trees and rocks on the track, it can go over small grass and even uproot medium-sized plants.
+- The player car can collide with rocks and other trackside objects.
 - As the player goes off the track on the sand, we can see sand particles flying off the tires of the car.
 - NPC and player cars emit smoke from the engine as they try to accelerate or decelerate. 
 

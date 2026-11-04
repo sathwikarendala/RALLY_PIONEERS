@@ -1,8 +1,6 @@
 using UnityEngine;
 
-// Formula Horizon - shared base for track themes.
-// Each theme (Desert, Forest) lives in its own script and defines its circuit,
-// colours, lighting and roadside scenery.
+// Rally Pioneers - shared base for the desert circuit and its roadside scenery.
 public delegate GameObject ShapeMaker(string name, PrimitiveType type, Vector3 pos, Vector3 scale, Material mat);
 
 public struct SceneryContext
@@ -13,7 +11,7 @@ public struct SceneryContext
     public int sideSign;      // -1 left, +1 right
     public System.Random rnd;
     public ShapeMaker shape;
-    public Material bark, foliage, foliage2, rock, rock2;
+    public Material foliage2, rock, rock2;
 }
 
 public abstract class TrackTheme

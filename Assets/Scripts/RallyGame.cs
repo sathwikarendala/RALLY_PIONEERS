@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// Formula Horizon - Desert & Forest Championship.
-// Fully procedural (no external assets). Two distinct spline circuits with elevation,
+// Rally Pioneers - Desert Championship.
+// Fully procedural (no external assets). A spline circuit with elevation,
 // mesh road + collider, 5 AI rivals, live race positions, results table.
 public class RallyGame : MonoBehaviour
 {
@@ -13,9 +13,9 @@ public class RallyGame : MonoBehaviour
     static readonly string[] RivalNames = { "M. Rossi", "K. Tanaka", "L. Weber", "A. Silva", "J. Okafor" };
     static readonly Color[] RivalColors = { new Color(.1f,.45f,.95f), new Color(.98f,.8f,.1f), new Color(.15f,.75f,.35f), new Color(.85f,.85f,.9f), new Color(.6f,.2f,.85f) };
 
-    // Track themes live in their own scripts: DesertTheme.cs and ForestTheme.cs.
-    static readonly TrackTheme[] Themes = { new DesertTheme(), new ForestTheme() };
-    TrackTheme T => Themes[theme];
+    static readonly TrackTheme Desert = new DesertTheme();
+    const string BestTimeKey = "RallyChampBest0";
+    TrackTheme T => Desert;
 
     class Racer { public Transform t; public string name; public float progress, speed, skill, lane, finishTime; public bool player, done; }
 
@@ -26,7 +26,7 @@ public class RallyGame : MonoBehaviour
     float trackLength;
     readonly List<Racer> racers = new List<Racer>();
     Racer me;
-    Material road, line, kerbA, kerbB, ground, bark, foliage, foliage2, rock, rock2, glass, tyre;
+    Material road, line, kerbA, kerbB, ground, foliage2, rock, rock2, glass, tyre;
     float steerS, camYaw;
     readonly List<Transform> crowdArms = new List<Transform>();
     readonly List<Transform> crowdFlags = new List<Transform>();
@@ -36,7 +36,7 @@ public class RallyGame : MonoBehaviour
     Texture2D gasTexture, brakeTexture, dialTexture;
     bool Held(string key) { return pedalInput.Contains(key) || mouseInput == key || touchInput.ContainsValue(key); }
     float speed, heading, elapsed, countdown, best, vy;
-    int theme, lap, nearest;
+    int lap, nearest;
     bool racing, paused, finished;
     GUIStyle title, label, small, button;
     AudioSource engine; AudioClip engineClip;
@@ -45,7 +45,7 @@ public class RallyGame : MonoBehaviour
     static void Boot()
     {
         if (SceneManager.GetActiveScene().name != "RallyMain" || FindObjectOfType<RallyGame>() != null) return;
-        new GameObject("Formula Horizon").AddComponent<RallyGame>();
+        new GameObject("Rally Pioneers").AddComponent<RallyGame>();
     }
     void Start() { Application.targetFrameRate = 60; QualitySettings.vSyncCount = 1; BuildWorld(); }
 
@@ -134,7 +134,7 @@ public class RallyGame : MonoBehaviour
         road = Mat(new Color(.16f,.17f,.19f), .35f); line = Mat(Color.white);
         kerbA = Mat(new Color(.9f,.12f,.1f)); kerbB = Mat(Color.white);
         ground = Mat(th.Ground);
-        bark = Mat(new Color(.27f,.18f,.11f)); foliage = Mat(new Color(.09f,.3f,.13f)); foliage2 = Mat(new Color(.18f,.42f,.15f));
+        foliage2 = Mat(new Color(.18f,.42f,.15f));
         rock = Mat(th.RockA); rock2 = Mat(th.RockB);
         glass = Mat(new Color(.05f,.1f,.15f), .9f); tyre = Mat(new Color(.03f,.03f,.03f));
 
@@ -215,7 +215,7 @@ public class RallyGame : MonoBehaviour
                 Vector3 q = p + side*s*(Width*.5f + 16f + (float)rnd.NextDouble()*40f); q.y = 0;
                 if (DistToTrack(q) < Width*.5f + 12f) continue;
                 th.PlaceScenery(new SceneryContext { spot = q, trackPoint = p, side = side, sideSign = s, rnd = rnd,
-                    shape = (n, t, pos, sc, m) => Shape(n, t, pos, sc, m), bark = bark, foliage = foliage, foliage2 = foliage2, rock = rock, rock2 = rock2 });
+                    shape = (n, t, pos, sc, m) => Shape(n, t, pos, sc, m), foliage2 = foliage2, rock = rock, rock2 = rock2 });
             }
         }
         // Start gantry + grid
@@ -317,7 +317,7 @@ public class RallyGame : MonoBehaviour
             r.t.position = p + side*lat; r.t.rotation = Quaternion.LookRotation(f);
         }
         heading = car.eulerAngles.y; camYaw = heading; nearest = path.Length - 4;
-        best = PlayerPrefs.GetFloat("RallyChampBest"+theme, 0);
+        best = PlayerPrefs.GetFloat(BestTimeKey, 0);
         chase.transform.position = car.position - car.forward*9 + Vector3.up*4; chase.transform.LookAt(car.position + Vector3.up);
         if (engine != null) { if (go) engine.Play(); else engine.Stop(); }
     }
@@ -383,7 +383,7 @@ public class RallyGame : MonoBehaviour
         float delta = Mathf.DeltaAngle(prevLapPos/trackLength*360f, dist/trackLength*360f)/360f*trackLength;
         if (Mathf.Abs(delta) < 60f) me.progress += delta;
         int newLap = Mathf.FloorToInt(me.progress/trackLength) + 1;
-        if (!finished && newLap > Laps) { finished = true; me.done = true; me.finishTime = elapsed; if (best == 0 || elapsed < best) { best = elapsed; PlayerPrefs.SetFloat("RallyChampBest"+theme, best); PlayerPrefs.Save(); } }
+        if (!finished && newLap > Laps) { finished = true; me.done = true; me.finishTime = elapsed; if (best == 0 || elapsed < best) { best = elapsed; PlayerPrefs.SetFloat(BestTimeKey, best); PlayerPrefs.Save(); } }
         lap = Mathf.Clamp(newLap, 1, Laps);
 
         // --- AI rivals: follow spline, brake for curvature, rubber-band
@@ -464,10 +464,10 @@ public class RallyGame : MonoBehaviour
         if (!racing)
         {
             GUI.Box(new Rect(45,80,600,560), "");
-            GUI.Label(new Rect(75,105,560,60), "FORMULA HORIZON", title);
-            GUI.Label(new Rect(77,165,540,30), "DESERT & FOREST CHAMPIONSHIP", small);
+            GUI.Label(new Rect(75,105,560,60), "RALLY PIONEERS", title);
+            GUI.Label(new Rect(77,165,540,30), "DESERT CHAMPIONSHIP", small);
             GUI.Label(new Rect(77,215,540,40), "6 cars · 3 laps · " + Mathf.RoundToInt(trackLength) + " m circuit", label);
-            if (GUI.Button(new Rect(77,280,520,46), "TRACK: " + trackName, button)) { theme = 1 - theme; BuildWorld(); }
+            GUI.Label(new Rect(77,280,520,46), "TRACK: " + trackName, label);
             if (GUI.Button(new Rect(77,345,520,46), "START RACE", button)) ResetRace(true);
             GUI.Label(new Rect(77,420,520,120), "W/S or ↑/↓: throttle / brake-reverse   A/D or ←/→: steer\nSpace: handbrake   B: recover to track\nR: restart   Esc: pause", small);
             GUI.Label(new Rect(77,540,520,60), "Best time on this track: " + (best > 0 ? Clock(best) : "--:--"), small);

@@ -1,4 +1,6 @@
-# Formula Horizon WebGL build
+# Rally Pioneers WebGL build
+
+This build contains one playable circuit: Desert Horizon — Canyon Rush. The forest environment and track selection have been removed.
 
 ## Run locally
 
@@ -11,4 +13,4 @@ Do not open `index.html` directly. Browsers block the Unity build files when the
 
 ## Publish on GitHub Pages
 
-For a public playable link, upload the entire Formula Horizon project folder (the parent folder containing `.github`, `scripts`, and `FormulaHorizonWebGL`) to a GitHub repository. Then select **Settings > Pages > GitHub Actions** in that repository and push to `main` or `master`. The included workflow prepares and deploys this WebGL build. Share the Pages URL shown in the workflow's deployment summary; the repository URL itself is not a playable game link.
+For a public playable link, upload the entire Rally Pioneers project folder (the parent folder containing `.github`, `scripts`, and `FormulaHorizonWebGL`) to a GitHub repository. Then select **Settings > Pages > GitHub Actions** in that repository and push to `main` or `master`. The included workflow prepares and deploys this WebGL build. Share the Pages URL shown in the workflow's deployment summary; the repository URL itself is not a playable game link.

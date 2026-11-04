@@ -1,4 +1,4 @@
-name: Deploy Formula Horizon to GitHub Pages
+name: Deploy Rally Pioneers to GitHub Pages
 
 on:
   push:
